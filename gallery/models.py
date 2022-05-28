@@ -1,4 +1,3 @@
-from email.policy import default
 from django.db import models
 
 # Create your models here.
@@ -15,8 +14,12 @@ class User(models.Model):
 class Image(models.Model):
     image = models.ImageField(upload_to='images/')
     name = models.CharField(max_length=30)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.CharField(max_length=200)
     upload_date = models.DateTimeField(auto_now_add=True)
+    location = models.ForeignKey('Location', on_delete=models.CASCADE)
     
 # Location Model
+class Location(models.Model):
+    location = models.CharField(max_length=30)
 # Categories Model
