@@ -43,6 +43,23 @@ class Image(models.Model):
         img_location = Image.objects.filter(location__name=location).all()
         return img_location
 
+    @classmethod
+    def update_image(cls,id,value):
+        """
+        Method to update image details
+
+        Args:
+            id: id of the image being updated
+            value:
+        """
+        cls.objects.filter(pk=id).update(image=value)
+        
+    @classmethod
+    def search_by_category(cls,category):
+        image = cls.objects.filter(category__name__icontains=category)
+        return image
+
+
     def __str__(self):
         return self.name
     
