@@ -30,6 +30,18 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
         
+    @classmethod
+    def get_image_by_id(cls,id):
+        """
+        method to query image from database by Image ID
+        """
+        image = Image.objects.filter(id=id).all()
+        return image
+    
+    @classmethod
+    def filter_by_location(cls,location):
+        img_location = Image.objects.filter(location__name=location).all()
+        return img_location
 
     def __str__(self):
         return self.name
