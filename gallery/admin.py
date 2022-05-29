@@ -5,5 +5,7 @@ from .models import *
 class ImageAdmin(admin.ModelAdmin):
     list_display = ('name',)
     
-admin.site.register(User)
+# admin.site.register(User)
 admin.site.register(Image, ImageAdmin)
+admin.site.register(Location)
+admin.site.register(Category)
