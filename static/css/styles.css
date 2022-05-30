@@ -1,0 +1,19 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Antonio', sans-serif;
+
+}
+p,span{
+    font-family: 'Cormorant', serif;
+}
+.img-fluid{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+.col-md-4{
+    padding: 0.5rem;
+}
