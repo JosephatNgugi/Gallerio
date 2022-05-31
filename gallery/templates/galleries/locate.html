@@ -6,10 +6,10 @@
     <h2 class="text-center">WELCOME TO GALLERIO <br> The virtual photo album Experience</h2>
     <div class="row">
             
-        <!-- <p>Images from {{location.image_location}}</p> -->
+        <!-- <p>Images from {{image_location.location}}</p> -->
         {% for image in image_location %}
         <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
-            <img src="{{image.image.url}}" alt="{{image.name}}" class="img-fluid">
+            <a href="{% url 'image' image.id %}"><img src="{{image.image.url}}" alt="{{image.name}}" class="img-fluid"></a>
         </div>
         {% empty %}
         <div class="row">

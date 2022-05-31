@@ -17,3 +17,20 @@ p,span{
 .col-md-4{
     padding: 0.5rem;
 }
+.card-img{
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+}
+.flex{
+    display: inline-flex;
+    padding: 1rem;
+    align-items: center;
+}
+.detail{
+    margin-right: 2rem;
+}
+.img_detail{
+    padding: 2rem;
+    align-items: center;
+}

@@ -1,20 +1,25 @@
 {%extends 'galleries/base.html'%}
 
- {% block content %}
+{% block content %}
 
- <div class="container">
+<div class="container img_detail">
+    <div class="row">
+        <img src="{{image.image.url}}" class="card-img" alt="{{image.name}}">
+    </div>
+    
+    <div class="row flex">
+        <h1 class="p-5">{{image.name}}:</h1>
+        <p class="p-5">{{image.description}}</p>
+    </div>
+    <br>
 
-     <img src="{{image.image.url}}"  class="card-img" alt="">
 
-   <div class="row">
-     <h1>{{image.name}}:</h1>
-     <p>{{image.description}}</p>
-   </div>
+    <div class="flex">
+        <p class="detail">{{image.category}}</p>
+        <p class="detail">{{image.location}}</p>
+        <p>Uploaded on {{image.upload_date|date:"D d/m/y"}}</p>
+    </div>
 
-   <div class="row">
-     <p>Uploaded on {{image.upload_date|date:"D d/m/y"}}</p>
-   </div>
+</div>
 
- </div>
-
- {% endblock %}
+{% endblock %}
