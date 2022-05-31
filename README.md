@@ -6,7 +6,7 @@
 # Description  
 This is a Django application that displays user images.
 ##  Live Link  
-Click : to visit the webite
+Click : https://serene-sierra-10808.herokuapp.com/ to visit the webite
 ## Screenshots 
 ###### Home page
 
