@@ -18,13 +18,13 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               {% for location in locations %}
-              <a class="dropdown-item" href="{% url 'image_location' location.id %}">{{location.name}}</a>
+              <a class="dropdown-item" href="{% url 'image_location' locations.id %}">{{location.name}}</a>
               {% endfor %}
             </div>
           </li> 
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" action="{% url 'search_results' %}">
+          <input class="form-control me-2" type="search" placeholder="Search Image" aria-label="Search" name="image">
           <button class="btn btn-outline-light text-mute" type="submit">Search</button>
         </form>
       </div>
