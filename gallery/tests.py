@@ -51,3 +51,35 @@ class TestImageModel(TestCase):
         Location.objects.all().delete()
         Category.objects.all().delete()
 
+
+
+
+class TestLocationModel(TestCase):
+    def setUp(self):    
+        self.location = Location(name ="Nairobi")
+        self.location.save_location()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.location,Location))
+
+    def test_save_location(self):
+        self.location.save_location()
+        locations = Location.objects.all()
+        self.assertTrue(len(locations)> 0)
+
+    def test_get_location(self):
+        self.location .save_location()
+        locations = Location.objects.all()
+        self.assertTrue(len(locations)> 0)
+
+    def test_update_location(self):
+        new_location = "Mombasa"
+        self.location.update_location(self.location.id,new_location)
+        changed_location = Location.objects.filter(name= 'Mombasa')
+        self.assertTrue(len(changed_location)> 0)
+
+    def test_delete_location(self):
+        self.location.delete_location()
+        location = Location.objects.all()
+        self.assertTrue(len(location) == 0)
+
