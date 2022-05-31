@@ -31,11 +31,11 @@ class Image(models.Model):
         self.delete()
         
     @classmethod
-    def get_image_by_id(cls,id):
+    def get_image_by_id(cls,image_id):
         """
         method to query image from database by Image ID
         """
-        image = Image.objects.filter(id=id).all()
+        image = Image.objects.get(id=image_id)
         return image
     
     @classmethod

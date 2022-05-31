@@ -1,0 +1,20 @@
+{%extends 'galleries/base.html'%}
+
+ {% block content %}
+
+ <div class="container">
+
+     <img src="{{image.image.url}}"  class="card-img" alt="">
+
+   <div class="row">
+     <h1>{{image.name}}:</h1>
+     <p>{{image.description}}</p>
+   </div>
+
+   <div class="row">
+     <p>Uploaded on {{image.upload_date|date:"D d/m/y"}}</p>
+   </div>
+
+ </div>
+
+ {% endblock %}
