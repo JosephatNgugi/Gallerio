@@ -18,8 +18,8 @@ p,span{
     padding: 0.5rem;
 }
 .card-img{
-    width: 400px;
-    height: 400px;
+    width: 600px;
+    height: 600px;
     object-fit: contain;
 }
 .flex{
@@ -31,6 +31,7 @@ p,span{
     margin-right: 2rem;
 }
 .img_detail{
-    padding: 2rem;
+    /* padding: 5rem; */
+    padding-top: 1rem;
     align-items: center;
 }
