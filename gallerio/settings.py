@@ -17,7 +17,6 @@ import cloudinary
 import cloudinary.api_client
 import cloudinary.uploader
 from dotenv import load_dotenv, find_dotenv
-from decouple import config
 # from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,10 +28,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 load_dotenv(find_dotenv())
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG')
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = ['serene-sierra-10808.herokuapp.com']
 
@@ -90,14 +89,14 @@ WSGI_APPLICATION = 'gallerio.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-if config('MODE')=='dev':
+if os.environ.get('MODE')=='dev':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('DB_NAME'),
-            'USER': config('DB_USER'),
-            'PASSWORD': config('DB_PASSWORD'),
-            'HOST': config('DB_HOST'),
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': os.environ.get('DB_HOST'),
             'PORT': '',
         }
 }
@@ -105,7 +104,7 @@ if config('MODE')=='dev':
 else:
     DATABASES = {
         'default': dj_database_url.config(
-            default=config('DATABASE_URL')
+            default=os.environ.get('DATABASE_URL')
         )
     }
     
@@ -160,9 +159,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Cloudinary Configurations
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 cloudinary.config(
-    cloud_name = config('CLOUDINARY_CLOUD_NAME'),
-    api_key = config('CLOUDINARY_API_KEY'),
-    api_secret = config('CLOUDINARY_SECRET'),
+    cloud_name = os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    api_key = os.environ.get('CLOUDINARY_API_KEY'),
+    api_secret = os.environ.get('CLOUDINARY_SECRET'),
     secure = True
 )
 
