@@ -31,7 +31,7 @@ load_dotenv(find_dotenv())
 SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = ['serene-sierra-10808.herokuapp.com']
 
