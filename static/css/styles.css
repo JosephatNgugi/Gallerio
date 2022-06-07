@@ -24,14 +24,30 @@ p,span{
 }
 .flex{
     display: inline-flex;
-    padding: 1rem;
-    align-items: center;
+    /* padding: 0.5rem; */
+    text-align: left;
 }
 .detail{
     margin-right: 2rem;
 }
 .img_detail{
     /* padding: 5rem; */
+    height: 100vh;
     padding-top: 1rem;
     align-items: center;
+    font-size: 1.3rem;
+}
+.img_detail .header{
+    font-size: 2rem;
+}
+.img_detail .card-body{
+    padding: 0.6rem;
+    border: 0.2rem solid silver;
+    object-fit: contain;
+}
+.header{
+    padding: 1.2rem;
+    margin-bottom: 1.3rem;
+    width: 100%;
+    background-color: bisque;
 }

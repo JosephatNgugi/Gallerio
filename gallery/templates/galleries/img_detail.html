@@ -4,20 +4,26 @@
 
 <div class="container img_detail">
     <div class="row">
-        <img src="{{image.image.url}}" class="card-img" alt="{{image.name}}">
-    </div>
-    
-    <div class="row flex">
-        <h5 class="p-1">{{image.name}}:</h5>
-        <p class="p-1">{{image.description}}</p>
-    </div>
-    <br>
+        <div class="col-md-5">
+            <img src="{{image.image.url}}" class="card-img" alt="{{image.name}}">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-5">
+            <div class="row">
+                <h5 class=" text-center header p-1">{{image.name}}</h5>
+                <p class="p-1"><strong>Description: </strong>{{image.description}}</p>
+            </div>
 
+            <div>
+                <div class="flex">
+                    <p class="detail"><strong>Category: </strong>{{image.category}}</p>
+                    <p class="detail"><strong>Location: </strong>{{image.location}}</p>
+                </div>
+                <p>Uploaded on {{image.upload_date|date:"D d/m/y"}}</p>
 
-    <div class="flex">
-        <p class="detail">{{image.category}}</p>
-        <p class="detail">{{image.location}}</p>
-        <p>Uploaded on {{image.upload_date|date:"D d/m/y"}}</p>
+            </div>
+        </div>
+
     </div>
 
 </div>

@@ -13,7 +13,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 import django_heroku
 import dj_database_url
-from decouple import config,Csv
+import cloudinary
+import cloudinary.api_client
+import cloudinary.uploader
+from dotenv import load_dotenv, find_dotenv
 # from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,12 +27,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-=05i!wduymnv$@-p_s+n-w3=c5(cbt@n%uh3g@w-y=as-_0)*)'
+load_dotenv(find_dotenv())
+SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
-# ALLOWED_HOSTS = ['serene-sierra-10808.herokuapp.com']
+ALLOWED_HOSTS = ['serene-sierra-10808.herokuapp.com']
 
 
 # Application definition
@@ -43,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # apps
-    'gallery'
+    'gallery',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -84,14 +89,14 @@ WSGI_APPLICATION = 'gallerio.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-if config('MODE')=='dev':
+if os.environ.get('MODE')=='dev':
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': config('DB_NAME'),
-            'USER': config('DB_USER'),
-            'PASSWORD': config('DB_PASSWORD'),
-            'HOST': config('DB_HOST'),
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': os.environ.get('DB_HOST'),
             'PORT': '',
         }
 }
@@ -99,14 +104,14 @@ if config('MODE')=='dev':
 else:
     DATABASES = {
         'default': dj_database_url.config(
-            default=config('DATABASE_URL')
+            default=os.environ.get('DATABASE_URL')
         )
     }
     
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 # Password validation
@@ -150,6 +155,15 @@ STATICFILES_DIRS = [
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Cloudinary Configurations
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+cloudinary.config(
+    cloud_name = os.environ['CLOUDINARY_CLOUD_NAME'],
+    api_key = os.environ['CLOUDINARY_API_KEY'],
+    api_secret = os.environ['CLOUDINARY_SECRET'],
+    secure = True
+)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
