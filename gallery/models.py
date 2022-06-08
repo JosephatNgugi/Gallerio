@@ -1,6 +1,5 @@
 from django.db import models
-import cloudinary
-
+from cloudinary.models import CloudinaryField
 # Create your models here.
 def set_location_unknown():
     return Location.objects.get_or_create(location='unknown')
@@ -17,7 +16,7 @@ def set_location_unknown():
 
 # Image Model
 class Image(models.Model):
-    image = models.ImageField('image file' ,upload_to='Gallery/images/')
+    image = CloudinaryField('image file')
     name = models.CharField(max_length=30)
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.CharField(max_length=200,blank=True)
